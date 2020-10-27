@@ -1,9 +1,17 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import App from "./App";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe("app", () => {
+  it("renders welcome message", () => {
+    render(<App />);
+    const h1Element = screen.getByText(/Welcome to Tandem for 400!/i);
+    expect(h1Element).toBeInTheDocument();
+  });
+
+  it("renders dialog to advance to questions", () => {
+    render(<App />);
+    const pElement = screen.getByText(/Click to start/);
+    expect(pElement).toBeInTheDocument();
+  });
 });
