@@ -14,5 +14,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
 }
