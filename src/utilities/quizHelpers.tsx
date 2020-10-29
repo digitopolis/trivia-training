@@ -1,4 +1,4 @@
-interface Question {
+export interface Question {
   question: string;
   incorrect: string[];
   correct: string;
