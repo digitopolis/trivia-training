@@ -42,7 +42,9 @@ describe("quiz component", () => {
       getByText(/Devmynd/),
       new MouseEvent("click", { bubbles: true, cancelable: true })
     );
-    const secondQuestion = getByText(questions[1].question);
-    expect(secondQuestion).toBeInTheDocument();
+    setTimeout(() => {
+      const secondQuestion = getByText(questions[1].question);
+      expect(secondQuestion).toBeInTheDocument();
+    }, 4000);
   });
 });

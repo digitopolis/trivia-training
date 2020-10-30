@@ -26,6 +26,7 @@ const Quiz: React.FC<{ questions: IQuestion[] }> = ({ questions }) => {
         number={questionNumber}
         question={currentQuestion.question}
         choices={shuffledChoices()}
+        correctAnswer={currentQuestion.correct}
         nextQuestion={getNextQuestion}
       />
     </div>
