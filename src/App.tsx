@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Intro from "./components/intro";
-import { get10Questions, shuffleQuestions } from "./utilities/quizHelpers";
+import Quiz from "./components/quiz";
+import {
+  get10Questions,
+  IQuestion,
+  shuffleArray,
+} from "./utilities/quizHelpers";
 
-const DATA = require("./data.json");
+const DATA: IQuestion[] = require("./data.json");
 
 function App() {
-  const [questions, setQuestions] = useState(
-    get10Questions(shuffleQuestions(DATA))
+  const [questions, setQuestions] = useState<IQuestion[]>(
+    get10Questions(shuffleArray(DATA))
   );
 
   return (
@@ -19,7 +24,7 @@ function App() {
             <Intro />
           </Route>
           <Route path="/quiz">
-            <h1>Question 1</h1>
+            <Quiz questions={questions} />
           </Route>
         </Switch>
       </BrowserRouter>

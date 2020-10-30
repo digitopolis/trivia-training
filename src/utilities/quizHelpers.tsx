@@ -1,11 +1,14 @@
-export interface Question {
+export interface IQuestion {
   question: string;
   incorrect: string[];
   correct: string;
 }
-
-export const shuffleQuestions = (questionData: Question[]): Question[] => {
-  const shuffledArray: Question[] = [...questionData];
+export function shuffleArray(array: string[]): string[];
+export function shuffleArray(array: IQuestion[]): IQuestion[];
+export function shuffleArray(
+  array: IQuestion[] | string[]
+): (IQuestion | string)[] {
+  const shuffledArray = [...array];
   for (let index: number = shuffledArray.length - 1; index >= 0; index--) {
     const swap: number = Math.floor(Math.random() * index);
     const temp = shuffledArray[swap];
@@ -13,8 +16,8 @@ export const shuffleQuestions = (questionData: Question[]): Question[] => {
     shuffledArray[index] = temp;
   }
   return shuffledArray;
-};
+}
 
-export const get10Questions = (questionData: Question[]): Question[] => {
+export const get10Questions = (questionData: IQuestion[]): IQuestion[] => {
   return questionData.slice(0, 10);
 };

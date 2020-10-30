@@ -1,7 +1,11 @@
 import React from "react";
-import { shuffleQuestions, get10Questions } from "../utilities/quizHelpers";
+import {
+  shuffleArray,
+  get10Questions,
+  IQuestion,
+} from "../utilities/quizHelpers";
 
-const data = [
+const data: IQuestion[] = [
   {
     question: "What was Tandem previous name?",
     incorrect: ["Tandem", "Burger Shack", "Extraordinary Humans"],
@@ -120,10 +124,19 @@ const data = [
 
 describe("quiz helpers", () => {
   it("shuffles array of questions", () => {
-    const questions = shuffleQuestions(data);
+    const questions = shuffleArray(data);
     expect(questions[5].question).not.toEqual(data[5].question);
     expect(questions[0].question).not.toEqual(data[0].question);
     expect(questions[17].question).not.toEqual(data[17].question);
+  });
+
+  it("shuffles array of choices", () => {
+    let choices = [] as string[];
+    choices = choices.concat(data[0].incorrect, data[0].correct);
+    const shuffledChoices = shuffleArray(choices);
+    expect(shuffledChoices[0]).not.toEqual(choices[0]);
+    expect(shuffledChoices[1]).not.toEqual(choices[1]);
+    expect(shuffledChoices[2]).not.toEqual(choices[2]);
   });
 
   it("generates a set of 10 questions", () => {
