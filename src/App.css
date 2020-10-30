@@ -18,3 +18,12 @@
   cursor: pointer;
   text-decoration: none;
 }
+
+li {
+  padding: 0.25em;
+  list-style-type: none;
+}
+
+li:hover {
+  border: 2px solid;
+}

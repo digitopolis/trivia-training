@@ -21,7 +21,7 @@ const Quiz: React.FC<{ questions: IQuestion[] }> = ({ questions }) => {
     return shuffleArray(choices);
   };
   return (
-    <div>
+    <header className="App-header">
       <Question
         number={questionNumber}
         question={currentQuestion.question}
@@ -29,7 +29,7 @@ const Quiz: React.FC<{ questions: IQuestion[] }> = ({ questions }) => {
         correctAnswer={currentQuestion.correct}
         nextQuestion={getNextQuestion}
       />
-    </div>
+    </header>
   );
 };
 
