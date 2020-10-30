@@ -1,5 +1,5 @@
 import React from "react";
-import { queryByTestId, render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import Quiz from "../components/quiz";
 
 const questions = [
@@ -32,5 +32,17 @@ describe("quiz component", () => {
     const { getByText } = render(<Quiz questions={questions} />);
     const firstQuestion = getByText(questions[0].question);
     expect(firstQuestion).toBeInTheDocument();
+  });
+
+  it("clicking an answer changes the question", () => {
+    const { getByText } = render(<Quiz questions={questions} />);
+    const firstQuestion = getByText(questions[0].question);
+    expect(firstQuestion).toBeInTheDocument();
+    fireEvent(
+      getByText(/Devmynd/),
+      new MouseEvent("click", { bubbles: true, cancelable: true })
+    );
+    const secondQuestion = getByText(questions[1].question);
+    expect(secondQuestion).toBeInTheDocument();
   });
 });

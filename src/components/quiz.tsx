@@ -1,11 +1,33 @@
-import React from "react";
-import { Question } from "../utilities/quizHelpers";
+import React, { useState } from "react";
+import { IQuestion, shuffleArray } from "../utilities/quizHelpers";
+import Question from "./question";
 
-const Quiz: React.FC<{ questions: Question[] }> = ({ questions }) => {
+const Quiz: React.FC<{ questions: IQuestion[] }> = ({ questions }) => {
+  const [questionNumber, setQuestionNumber] = useState(1);
+  const [currentQuestion, setCurrentQuestion] = useState(questions[0]);
+
+  const getNextQuestion = (): void => {
+    const nextNumber = questionNumber + 1;
+    setQuestionNumber(nextNumber);
+    setCurrentQuestion(questions[nextNumber - 1]);
+  };
+
+  const shuffledChoices = (): string[] => {
+    let choices = [] as string[];
+    choices = choices.concat(
+      currentQuestion.incorrect,
+      currentQuestion.correct
+    );
+    return shuffleArray(choices);
+  };
   return (
     <div>
-      <h1>Question 1:</h1>
-      <p>{questions[0].question}</p>
+      <Question
+        number={questionNumber}
+        question={currentQuestion.question}
+        choices={shuffledChoices()}
+        nextQuestion={getNextQuestion}
+      />
     </div>
   );
 };
