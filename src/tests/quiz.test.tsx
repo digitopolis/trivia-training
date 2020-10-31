@@ -63,4 +63,26 @@ describe("quiz component", () => {
     }, 3000);
     jest.clearAllMocks();
   });
+
+  it("adds multiple selected answers", () => {
+    const setState = jest.fn();
+    const useStateMock: any = (init: any) => [init, setState];
+    const useStateSpy = jest.spyOn(React, "useState");
+    useStateSpy.mockImplementation(useStateMock);
+    const { getByText } = render(<Quiz questions={questions} />);
+    fireEvent(
+      getByText(/Devmynd/),
+      new MouseEvent("click", { bubbles: true, cancelable: true })
+    );
+    setTimeout(() => {
+      fireEvent(
+        getByText(/Vidi, vini, vici/),
+        new MouseEvent("click", { bubbles: true, cancelable: true })
+      );
+    }, 3000);
+    setTimeout(() => {
+      expect(setState).toHaveBeenCalledWith(["Devmynd", "Vidi, vini, vici"]);
+    }, 3000);
+    jest.clearAllMocks();
+  });
 });
