@@ -85,4 +85,22 @@ describe("quiz component", () => {
     }, 3000);
     jest.clearAllMocks();
   });
+
+  it("shows result after final question", () => {
+    const { getByText } = render(
+      <Quiz questions={[questions[0], questions[1]]} />
+    );
+    fireEvent(
+      getByText(questions[0].correct),
+      new MouseEvent("click", { bubbles: true, cancelable: true })
+    );
+    setTimeout(() => {
+      fireEvent(
+        getByText(questions[1].correct),
+        new MouseEvent("click", { bubbles: true, cancelable: true })
+      );
+      const result = getByText(/Your score/);
+      expect(result).toBeInTheDocument();
+    }, 4000);
+  });
 });
