@@ -47,4 +47,20 @@ describe("quiz component", () => {
       expect(secondQuestion).toBeInTheDocument();
     }, 4000);
   });
+
+  it("adds chosen answer to answer array", () => {
+    const setState = jest.fn();
+    const useStateMock: any = (init: any) => [init, setState];
+    const useStateSpy = jest.spyOn(React, "useState");
+    useStateSpy.mockImplementation(useStateMock);
+    const { getByText } = render(<Quiz questions={questions} />);
+    fireEvent(
+      getByText(/Devmynd/),
+      new MouseEvent("click", { bubbles: true, cancelable: true })
+    );
+    setTimeout(() => {
+      expect(setState).toHaveBeenCalledWith(["Devmynd"]);
+    }, 3000);
+    jest.clearAllMocks();
+  });
 });

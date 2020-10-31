@@ -6,13 +6,22 @@ const Question: React.FC<{
   choices: string[];
   correctAnswer: string;
   nextQuestion: Function;
-}> = ({ number, question, choices, correctAnswer, nextQuestion }) => {
+  selectAnswer: Function;
+}> = ({
+  number,
+  question,
+  choices,
+  correctAnswer,
+  nextQuestion,
+  selectAnswer,
+}) => {
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (): void => {
+  const handleSubmit = (choice: string): void => {
     setSubmitted(true);
     setTimeout(() => {
       nextQuestion();
+      selectAnswer(choice);
       setSubmitted(false);
     }, 2000);
   };
@@ -31,7 +40,7 @@ const Question: React.FC<{
       <ul>
         {choices.map((choice, idx) => {
           return (
-            <li key={idx} onClick={handleSubmit}>
+            <li key={idx} onClick={() => handleSubmit(choice)}>
               {choice}
             </li>
           );
