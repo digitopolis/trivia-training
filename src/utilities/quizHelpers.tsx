@@ -21,3 +21,13 @@ export function shuffleArray(
 export const get10Questions = (questionData: IQuestion[]): IQuestion[] => {
   return questionData.slice(0, 10);
 };
+
+export const getScore = (questions: IQuestion[], answers: string[]): number => {
+  let score: number = 0;
+  questions.map((question, idx) => {
+    if (question.correct === answers[idx]) {
+      score++;
+    }
+  });
+  return score;
+};

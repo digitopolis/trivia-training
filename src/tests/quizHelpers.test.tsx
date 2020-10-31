@@ -1,8 +1,8 @@
-import React from "react";
 import {
   shuffleArray,
   get10Questions,
   IQuestion,
+  getScore,
 } from "../utilities/quizHelpers";
 
 const data: IQuestion[] = [
@@ -142,5 +142,23 @@ describe("quiz helpers", () => {
   it("generates a set of 10 questions", () => {
     const questions = get10Questions(data);
     expect(questions.length).toEqual(10);
+  });
+
+  it("calulates the number of correct answers", () => {
+    const questions = data.slice(0, 10);
+    const answers = [
+      "Devmynd",
+      "wrong",
+      "wrong",
+      "31 mph",
+      "5",
+      "Q",
+      "wrong",
+      "wrong",
+      "wrong",
+      "wrong",
+    ];
+    const score = getScore(questions, answers);
+    expect(score).toEqual(4);
   });
 });
