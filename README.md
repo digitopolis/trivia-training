@@ -1,46 +1,60 @@
-# Getting Started with Create React App
+# Tandem for 400
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Test your knowledge (and maybe learn something new) with a quick round of trivia!
 
-## Available Scripts
+## Requirements
 
-In the project directory, you can run:
+Make sure you have npm and Node.js installed by running:
 
-### `npm start`
+```bash
+node -v
+npm -v
+```
 
-Runs the app in the development mode.\
+Follow [these instructions](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) if you need to install them
+
+## Quick start
+
+Clone the project, install dependencies, and get it running on your local machine by running:
+
+```bash
+git clone git@github.com:digitopolis/trivia-training.git
+cd trivia-training
+npm install
+```
+
+Run the test suites with:
+
+```bash
+npm test
+```
+
+Run the app with:
+
+```bash
+npm start
+```
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## How to play
 
-### `npm test`
+From the intro page, simply click `'click here'` to start a round of trivia. For each question, select your answer by clicking on one of the four choices below the question. After you make your choice, your answer will be highlighted (in green if correct, or red if incorrect) and the correct answer will be shown below, before moving on to the next question. After 10 questions, you'll see your score.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+At the end of the game, click `'click here'` to start a new round of questions. The 10 questions are randomly chosen, so play again to see something new!
 
-### `npm run build`
+## Future plans
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+In future iterations of the app, I would like to be able to draw from a greater selection of questions/answers by integrating some external trivia API. This would also make it possible to add a 'category select' feature to allow players to choose a specific topic to focus on (i.e. history, geography, sports, etc.)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+I would also like to implement a local multiplayer mode, where two players could play against each other, answering the same 10 questions.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Built with
 
-### `npm run eject`
+- [React](https://reactjs.org/)
+- [Typescript](https://www.typescriptlang.org/)
+- Bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Author
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[Matt Readout](https://github.com/digitopolis)
