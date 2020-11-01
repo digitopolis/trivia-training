@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getScore, IQuestion, shuffleArray } from "../utilities/quizHelpers";
 import Question from "./question";
 import Result from "./result";
@@ -10,6 +10,11 @@ const Quiz: React.FC<{ questions: IQuestion[] }> = ({ questions }) => {
   const [done, setDone] = useState(false);
   const [score, setScore] = useState(0);
 
+  useEffect(() => {
+    const score = getScore(questions, answers);
+    setScore(score);
+  }, [answers]);
+
   const getNextQuestion = (): void => {
     const nextNumber = questionNumber + 1;
     setQuestionNumber(nextNumber);
@@ -17,8 +22,6 @@ const Quiz: React.FC<{ questions: IQuestion[] }> = ({ questions }) => {
   };
 
   const showResult = (): void => {
-    const score = getScore(questions, answers);
-    setScore(score);
     setDone(true);
   };
 
@@ -26,13 +29,13 @@ const Quiz: React.FC<{ questions: IQuestion[] }> = ({ questions }) => {
     setAnswers([...answers, answer]);
   };
 
-  const shuffledChoices = (): string[] => {
+  const getChoices = (): string[] => {
     let choices = [] as string[];
     choices = choices.concat(
       currentQuestion.incorrect,
       currentQuestion.correct
     );
-    return shuffleArray(choices);
+    return choices.sort();
   };
   return (
     <header className="App-header">
@@ -42,9 +45,11 @@ const Quiz: React.FC<{ questions: IQuestion[] }> = ({ questions }) => {
         <Question
           number={questionNumber}
           question={currentQuestion.question}
-          choices={shuffledChoices()}
+          choices={getChoices()}
           correctAnswer={currentQuestion.correct}
-          nextQuestion={questionNumber === 10 ? showResult : getNextQuestion}
+          nextQuestion={
+            questionNumber === questions.length ? showResult : getNextQuestion
+          }
           selectAnswer={addAnswer}
         />
       )}

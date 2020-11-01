@@ -38,6 +38,8 @@ describe("question component", () => {
       getByText(/Devmynd/),
       new MouseEvent("click", { bubbles: true, cancelable: true })
     );
-    expect(getByText(/Correct answer:/)).toBeInTheDocument();
+    setTimeout(() => {
+      expect(getByText(/Correct answer:/)).toBeInTheDocument();
+    }, 1000);
   });
 });

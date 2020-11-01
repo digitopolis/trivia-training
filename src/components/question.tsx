@@ -19,11 +19,11 @@ const Question: React.FC<{
 
   const handleSubmit = (choice: string): void => {
     setSubmitted(true);
+    selectAnswer(choice);
     setTimeout(() => {
       nextQuestion();
-      selectAnswer(choice);
-      setSubmitted(false);
     }, 2000);
+    setSubmitted(false);
   };
 
   const showCorrectAnswer = (): JSX.Element => {
