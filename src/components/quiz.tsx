@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getScore, IQuestion, shuffleArray } from "../utilities/quizHelpers";
+import { getScore, IQuestion } from "../utilities/quizHelpers";
 import Question from "./question";
 import Result from "./result";
 
@@ -16,7 +16,7 @@ const Quiz: React.FC<{ questions: IQuestion[]; newGame: Function }> = ({
   useEffect(() => {
     const score = getScore(questions, answers);
     setScore(score);
-  }, [answers]);
+  }, [questions, answers]);
 
   const getNextQuestion = (): void => {
     const nextNumber = questionNumber + 1;
