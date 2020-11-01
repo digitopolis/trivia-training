@@ -14,6 +14,7 @@ describe("question component", () => {
         choices={choices}
         correctAnswer={"Devmynd"}
         nextQuestion={() => null}
+        selectAnswer={() => null}
       />
     );
     expect(getByText(/Devmynd/)).toBeInTheDocument();
@@ -30,6 +31,7 @@ describe("question component", () => {
         choices={choices}
         correctAnswer={"Devmynd"}
         nextQuestion={() => null}
+        selectAnswer={() => null}
       />
     );
     fireEvent(
