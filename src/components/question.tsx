@@ -22,8 +22,8 @@ const Question: React.FC<{
     selectAnswer(choice);
     setTimeout(() => {
       nextQuestion();
+      setSubmitted(false);
     }, 2000);
-    setSubmitted(false);
   };
 
   const showCorrectAnswer = (): JSX.Element => {

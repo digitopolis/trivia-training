@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Result: React.FC<{ score: number }> = ({ score }) => {
+const Result: React.FC<{ score: number; newGame: Function }> = ({
+  score,
+  newGame,
+}) => {
   const showMessage = (): string => {
     if (score > 7) {
       return "Great job!";
@@ -16,7 +19,7 @@ const Result: React.FC<{ score: number }> = ({ score }) => {
       <h1>
         Your score: {score}/10 - {showMessage()}
       </h1>
-      <Link to="/" className="App-link">
+      <Link to="/" className="App-link" onClick={() => newGame()}>
         <p>Click here to play another round!</p>
       </Link>
     </header>

@@ -16,6 +16,10 @@ function App() {
     get10Questions(shuffleArray(DATA))
   );
 
+  const newGame = () => {
+    setQuestions(get10Questions(shuffleArray(DATA)));
+  };
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -24,7 +28,7 @@ function App() {
             <Intro />
           </Route>
           <Route path="/quiz">
-            <Quiz questions={questions} />
+            <Quiz questions={questions} newGame={newGame} />
           </Route>
         </Switch>
       </BrowserRouter>

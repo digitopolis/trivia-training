@@ -3,7 +3,10 @@ import { getScore, IQuestion, shuffleArray } from "../utilities/quizHelpers";
 import Question from "./question";
 import Result from "./result";
 
-const Quiz: React.FC<{ questions: IQuestion[] }> = ({ questions }) => {
+const Quiz: React.FC<{ questions: IQuestion[]; newGame: Function }> = ({
+  questions,
+  newGame,
+}) => {
   const [questionNumber, setQuestionNumber] = useState(1);
   const [currentQuestion, setCurrentQuestion] = useState(questions[0]);
   const [answers, setAnswers] = useState([] as string[]);
@@ -40,7 +43,7 @@ const Quiz: React.FC<{ questions: IQuestion[] }> = ({ questions }) => {
   return (
     <header className="App-header">
       {done ? (
-        <Result score={score} />
+        <Result score={score} newGame={newGame} />
       ) : (
         <Question
           number={questionNumber}

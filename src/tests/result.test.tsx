@@ -7,7 +7,7 @@ describe("result component", () => {
   it("displays the user's score out of 10", () => {
     const { getByText } = render(
       <BrowserRouter>
-        <Result score={5} />
+        <Result score={5} newGame={() => null} />
       </BrowserRouter>
     );
     const userScore = getByText(/5\/10/);
@@ -18,7 +18,7 @@ describe("result component", () => {
     it("displays Great Job! if score is over 7", () => {
       const { getByText } = render(
         <BrowserRouter>
-          <Result score={9} />
+          <Result score={9} newGame={() => null} />
         </BrowserRouter>
       );
       const message = getByText(/Great job!/);
@@ -28,7 +28,7 @@ describe("result component", () => {
     it("displays Not bad. if score is between 5 and 7", () => {
       const { getByText } = render(
         <BrowserRouter>
-          <Result score={5} />
+          <Result score={5} newGame={() => null} />
         </BrowserRouter>
       );
       const userScore = getByText(/Not bad/);

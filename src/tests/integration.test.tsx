@@ -72,7 +72,9 @@ jest.setTimeout(30000);
 
 describe("integration tests", () => {
   it("runs through a complete game and displays the result", async () => {
-    const { getByText } = render(<Quiz questions={questions} />);
+    const { getByText } = render(
+      <Quiz questions={questions} newGame={() => null} />
+    );
     await act(async () => {
       for (const question of questions) {
         await delay();

@@ -23,19 +23,25 @@ const questions = [
 
 describe("quiz component", () => {
   it("displays first question on render", () => {
-    const { getByText } = render(<Quiz questions={questions} />);
+    const { getByText } = render(
+      <Quiz questions={questions} newGame={() => null} />
+    );
     const questionTitle = getByText(/Question 1/);
     expect(questionTitle).toBeInTheDocument();
   });
 
   it("displays the correct question text", () => {
-    const { getByText } = render(<Quiz questions={questions} />);
+    const { getByText } = render(
+      <Quiz questions={questions} newGame={() => null} />
+    );
     const firstQuestion = getByText(questions[0].question);
     expect(firstQuestion).toBeInTheDocument();
   });
 
   it("clicking an answer changes the question", () => {
-    const { getByText } = render(<Quiz questions={questions} />);
+    const { getByText } = render(
+      <Quiz questions={questions} newGame={() => null} />
+    );
     const firstQuestion = getByText(questions[0].question);
     expect(firstQuestion).toBeInTheDocument();
     fireEvent(
@@ -53,7 +59,9 @@ describe("quiz component", () => {
     const useStateMock: any = (init: any) => [init, setState];
     const useStateSpy = jest.spyOn(React, "useState");
     useStateSpy.mockImplementation(useStateMock);
-    const { getByText } = render(<Quiz questions={questions} />);
+    const { getByText } = render(
+      <Quiz questions={questions} newGame={() => null} />
+    );
     fireEvent(
       getByText(/Devmynd/),
       new MouseEvent("click", { bubbles: true, cancelable: true })
@@ -69,7 +77,9 @@ describe("quiz component", () => {
     const useStateMock: any = (init: any) => [init, setState];
     const useStateSpy = jest.spyOn(React, "useState");
     useStateSpy.mockImplementation(useStateMock);
-    const { getByText } = render(<Quiz questions={questions} />);
+    const { getByText } = render(
+      <Quiz questions={questions} newGame={() => null} />
+    );
     fireEvent(
       getByText(/Devmynd/),
       new MouseEvent("click", { bubbles: true, cancelable: true })
@@ -88,7 +98,7 @@ describe("quiz component", () => {
 
   it("shows result after final question", () => {
     const { getByText } = render(
-      <Quiz questions={[questions[0], questions[1]]} />
+      <Quiz questions={[questions[0], questions[1]]} newGame={() => null} />
     );
     fireEvent(
       getByText(questions[0].correct),
