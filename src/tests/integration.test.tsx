@@ -1,5 +1,5 @@
 import React from "react";
-import { fireEvent, getByText, render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import Quiz from "../components/quiz";
 import { IQuestion } from "../utilities/quizHelpers";
 import { act } from "react-dom/test-utils";

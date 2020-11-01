@@ -6,7 +6,7 @@ const Intro: React.FC<{}> = () => {
     <header className="App-header">
       <h1>Welcome to Tandem for 400!</h1>
       <Link className="App-link" to="/quiz">
-        <p>Test your tivia skills with 10 random questions. Click to start!</p>
+        <p>Test your trivia skills with 10 random questions. Click to start!</p>
       </Link>
     </header>
   );
