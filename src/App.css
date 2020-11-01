@@ -26,4 +26,13 @@ li {
 
 li:hover {
   border: 2px solid;
+  cursor: pointer;
+}
+
+.correct {
+  border: 2px solid lightgreen;
+}
+
+.incorrect {
+  border: 2px solid firebrick;
 }

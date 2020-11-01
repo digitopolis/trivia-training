@@ -16,14 +16,27 @@ const Question: React.FC<{
   selectAnswer,
 }) => {
   const [submitted, setSubmitted] = useState(false);
+  const [answerIndex, setAnswerIndex] = useState<number | null>(null);
+  const [borderClass, setBorderClass] = useState("");
 
-  const handleSubmit = (choice: string): void => {
+  const handleSubmit = (idx: number, choice: string): void => {
+    setAnswerIndex(idx);
+    changeBorderColor(idx, choice);
     setSubmitted(true);
     selectAnswer(choice);
     setTimeout(() => {
       nextQuestion();
       setSubmitted(false);
+      setAnswerIndex(null);
     }, 2000);
+  };
+
+  const changeBorderColor = (idx: number, choice: string) => {
+    if (choice === correctAnswer) {
+      setBorderClass("correct");
+    } else {
+      setBorderClass("incorrect");
+    }
   };
 
   const showCorrectAnswer = (): JSX.Element => {
@@ -40,7 +53,11 @@ const Question: React.FC<{
       <ul>
         {choices.map((choice, idx) => {
           return (
-            <li key={idx} onClick={() => handleSubmit(choice)}>
+            <li
+              key={idx}
+              onClick={() => handleSubmit(idx, choice)}
+              className={idx === answerIndex ? borderClass : ""}
+            >
               {choice}
             </li>
           );

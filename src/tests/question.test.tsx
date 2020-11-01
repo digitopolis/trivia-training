@@ -42,4 +42,46 @@ describe("question component", () => {
       expect(getByText(/Correct answer:/)).toBeInTheDocument();
     }, 1000);
   });
+
+  it("highlights the chosen answer in green if correct", () => {
+    const { getByText } = render(
+      <Question
+        number={1}
+        question={question}
+        choices={choices}
+        correctAnswer={"Devmynd"}
+        nextQuestion={() => null}
+        selectAnswer={() => null}
+      />
+    );
+    const correct = getByText(/Devmynd/);
+    fireEvent(
+      correct,
+      new MouseEvent("click", { bubbles: true, cancelable: true })
+    );
+    setTimeout(() => {
+      expect(correct.classList.contains("correct")).toBe(true);
+    }, 1000);
+  });
+
+  it("highlights the chosen answer in red if incorrect", () => {
+    const { getByText } = render(
+      <Question
+        number={1}
+        question={question}
+        choices={choices}
+        correctAnswer={"Devmynd"}
+        nextQuestion={() => null}
+        selectAnswer={() => null}
+      />
+    );
+    const correct = getByText(/Devmynd/);
+    fireEvent(
+      correct,
+      new MouseEvent("click", { bubbles: true, cancelable: true })
+    );
+    setTimeout(() => {
+      expect(correct.classList.contains("incorrect")).toBe(true);
+    }, 1000);
+  });
 });
