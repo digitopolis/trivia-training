@@ -11,6 +11,13 @@ node -v
 npm -v
 ```
 
+Versions used for development were:
+
+```bash
+node v12.16.0
+npm v6.13.4
+```
+
 Follow [these instructions](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) if you need to install them
 
 ## Quick start
